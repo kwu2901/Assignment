@@ -16,15 +16,10 @@ struct TabBar: View {
                     Label("Shop", systemImage: "house")
                 }
             
-            DrawView()
-                .tabItem {
-                    Label("Customize", systemImage: "highlighter")
-                }
-            
             if root == "Admin" {
                 NewProductView()
                     .tabItem{
-                    Label("New", systemImage: "plus")
+                        Label("New", systemImage: "plus")
                     }
             }
             
@@ -37,7 +32,6 @@ struct TabBar: View {
                 .tabItem {
                     Label("Settings", systemImage: "gear")
                 }
-            
         }
     }
 }
@@ -48,5 +42,3 @@ struct TabBarView_Previews: PreviewProvider {
             .environmentObject(ProductManager())
     }
 }
-
-

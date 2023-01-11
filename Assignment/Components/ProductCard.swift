@@ -9,8 +9,11 @@ import SwiftUI
 
 struct ProductCard: View {
     @EnvironmentObject var cartManager: CartManager
-    @EnvironmentObject var cameraModel: CameraModel
+    @EnvironmentObject var productManager: ProductManager
     @State var showProduct = false
+    
+    var networkHandler = NetworkHandler()
+    
     var product : ProductModel
     
     var body: some View {
@@ -46,11 +49,12 @@ struct ProductCard: View {
                 ProductView(showProduct: $showProduct, product: product)
             }
                 Button {
-                    //cartManager.addToChart(product: product)
+                    productManager.updateProduct(product)
                 } label: {
-                    Image(systemName: "star")
+                    Image(systemName: product.isFav ? "star.fill" : "star")
                         .padding(10)
-                        .foregroundColor(.white)
+                        .foregroundColor(product.isFav ? .yellow : .white)
+//                        .foregroundColor(.white)
                         .background(.black)
                         .cornerRadius(50)
                         .padding()
@@ -64,6 +68,6 @@ struct ProductCardView_Previews: PreviewProvider {
     static var previews: some View {
         ProductCard(product: ProductModel.productList[0])
             .environmentObject(CartManager())
-            .environmentObject(CameraModel())
+            .environmentObject(ProductManager())
     }
 }
