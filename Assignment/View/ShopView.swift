@@ -9,9 +9,9 @@ import SwiftUI
 
 struct ShopView: View {
     @EnvironmentObject var productManager: ProductManager
-    @StateObject var cartManager = CartManager()
+    @EnvironmentObject var cartManager: CartManager
     var columns = [GridItem(.adaptive(minimum: 160), spacing: 20)]
-
+    
     var body: some View {
 
         NavigationView {
@@ -19,8 +19,8 @@ struct ShopView: View {
                 LazyVGrid(columns: columns, spacing: 20) {
                     ForEach(productManager.products, id: \.id) {
                         product in ProductCard(product: product)
-                            .environmentObject(cartManager)
                             .cornerRadius(20)
+                            .scaledToFit()
                     }
                 }
                 .padding()
@@ -30,7 +30,6 @@ struct ShopView: View {
             .toolbar{
                 NavigationLink{
                     CartView()
-                        .environmentObject(cartManager)
                 } label: {
                     CartButton(numOfProducts: cartManager.products.count)
                 }
@@ -43,6 +42,7 @@ struct ShopView: View {
 struct ShopView_Previews: PreviewProvider {
     static var previews: some View {
         ShopView()
+            .environmentObject(CartManager())
             .environmentObject(ProductManager())
     }
 }
