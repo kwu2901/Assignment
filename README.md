@@ -25,3 +25,15 @@ Data:
 	Online Date:
 		Backup JSON of product data
 		https://jsonbin.org/kwu2901/products
+
+API:
+
+	Apple Pay:
+		Payment function
+	
+	Alamofire:
+		Server request of get and post data
+		
+	SwiftyJSON:
+		The better way to deal with JSON data in Swift
+		
