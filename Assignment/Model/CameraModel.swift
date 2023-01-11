@@ -8,13 +8,14 @@
 import SwiftUI
 
 class CameraModel: ObservableObject {
+    var networkHandler = NetworkHandler()
     @Published var image: UIImage?
     @Published var showPicker = false
     @Published var source: Picker.Source = .library
     @Published var imageName: String = ""
     @Published var isEditing = false
     @Published var selectedProduct: ProductModel?
-    @Published var newImageList : [ProductModel] = []
+    @Published var newImageList: [ProductModel] = []
     @Published var showFileAlert = false
     @Published var appError: ErrorController.ErrorType?
     
@@ -33,30 +34,12 @@ class CameraModel: ObservableObject {
         do {
             try FileManager().saveImage("\(product.id)", image: image)
             newImageList.append(product)
-            saveImageJSONFile()
+            saveJSONFile()
             reset()
             
         } catch {
             showFileAlert = true
             appError = ErrorController.ErrorType(error: error as! ErrorController)
-        }
-    }
-    
-    func saveImageJSONFile() {
-        let encoder = JSONEncoder()
-        do {
-            let data = try encoder.encode(newImageList)
-            let jsonString = String(decoding: data, as: UTF8.self)
-            reset()
-            do {
-                try FileManager().saveDocument(contents: jsonString)
-            } catch {
-                showFileAlert = true
-                appError = ErrorController.ErrorType(error: error as! ErrorController)
-            }
-        } catch {
-            showFileAlert = true
-            appError = ErrorController.ErrorType(error: .encodingError)
         }
     }
     
@@ -112,6 +95,10 @@ class CameraModel: ObservableObject {
         do {
             let data = try encoder.encode(newImageList)
             let jsonString = String(decoding: data, as: UTF8.self)
+            
+            if networkHandler.checkInt() {
+                networkHandler.doRequest(product: newImageList, method: .post)
+            }
             reset()
             do {
                 try FileManager().saveDocument(contents: jsonString)
@@ -125,6 +112,3 @@ class CameraModel: ObservableObject {
         }
     }
 }
-
-
-

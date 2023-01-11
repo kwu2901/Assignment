@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SwiftyJSON
 
 struct ProductModel: Identifiable, Codable{
     var id = UUID()
@@ -20,13 +21,14 @@ struct ProductModel: Identifiable, Codable{
     }
     var dir: String
     var price: Int
+    var isFav: Bool
 }
 
 extension ProductModel{
     static var productList = [
-        ProductModel(name: "Room1", dir: "Night style", price: 100),
-        ProductModel(name: "Room2", dir: "European style", price: 150),
-        ProductModel(name: "Room3", dir: "Home style", price: 200),
+        ProductModel(name: "Room1", dir: "Night style", price: 100, isFav: false),
+        ProductModel(name: "Room2", dir: "European style", price: 150, isFav: false),
+        ProductModel(name: "Room3", dir: "Home style", price: 200, isFav: false),
     ]
 }
 
