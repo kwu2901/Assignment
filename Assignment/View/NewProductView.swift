@@ -197,7 +197,7 @@ extension NewProductView{
 
 extension NewProductView{
     func saveNewProduct() -> ProductModel{
-        let newProduct = ProductModel(name: name, dir: dir, price: Int(price)!)
+        let newProduct = ProductModel(name: name, dir: dir, price: Int(price)!, isFav: false)
         productManager.addToProductList(product: newProduct)
         return(newProduct)
     }
