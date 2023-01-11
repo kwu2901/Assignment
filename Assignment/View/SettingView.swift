@@ -16,7 +16,7 @@ struct SettingView: View {
         NavigationView {
             VStack {
                 
-                Image(systemName: "globe")
+                Image(systemName: "faceid")
                     .imageScale(.large)
                     .foregroundColor(.accentColor)
                 if model.isError == true {
@@ -37,11 +37,10 @@ struct SettingView: View {
                 })
                 
             }
+            .padding()
             .onAppear {
                 model.checkPolicy()
             }
-            .padding()
-
         }
     }
 }

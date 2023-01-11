@@ -56,7 +56,7 @@ class PaymentHandler: NSObject {
         
         let paymentRequest = PKPaymentRequest()
         paymentRequest.paymentSummaryItems = paymentSummaryItems
-        paymentRequest.merchantIdentifier = ""
+        paymentRequest.merchantIdentifier = "edu.self.Assignment-227105563"
         paymentRequest.merchantCapabilities = .capability3DS
         paymentRequest.countryCode = "HK"
         paymentRequest.currencyCode = "HKD"

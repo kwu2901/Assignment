@@ -42,5 +42,10 @@ class ProductManager: ObservableObject {
             appError = ErrorController.ErrorType(error: error as! ErrorController)
         }
     }
+    
+    func updateProduct(_ product: ProductModel) {
+        if let index = products.firstIndex(where: {$0.id == product.id}) {
+            products[index].isFav.toggle()
+        }
+    }
 }
-
