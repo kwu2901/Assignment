@@ -4,6 +4,16 @@ Mobile App Development
 Student no.:
 227105563
 
+Apps Type : Shopping App
+
+	View:
+		Shop View
+		  Cart View
+			Delivery View
+		Add Producrt View
+		Favorites View
+		Setting View
+
 Sensors:
 
 	Camera:
@@ -25,3 +35,15 @@ Data:
 	Online Date:
 		Backup JSON of product data
 		https://jsonbin.org/kwu2901/products
+
+API:
+
+	Apple Pay:
+		Payment function
+	
+	Alamofire:
+		Server request of get and post data
+		
+	SwiftyJSON:
+		The better way to deal with JSON data in Swift
+		
