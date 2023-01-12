@@ -12,10 +12,14 @@ import CoreLocationUI
 struct CheckoutView: View {
     @ObservedObject var locationManager = LocationManager()
     @EnvironmentObject var cartManager: CartManager
-    @State var name: String = ""
-    @State var address: String = ""
+    @State private var name: String = ""
+    @State private var address: String = ""
     @State var city: String = ""
     @State var zipCode: String = ""
+    
+//    init(){
+//        _address = State(initialValue: locatonModel.formattedAddress)
+//    }
     
     var body: some View {
         NavigationView{
@@ -47,7 +51,6 @@ struct CheckoutView: View {
         }
     }
     
-    //call location manager to fill in GPS local
     func autoFillIn(){
         let latitude = locationManager.lastLocation?.coordinate.latitude ?? 0
         let longitude = locationManager.lastLocation?.coordinate.longitude ?? 0

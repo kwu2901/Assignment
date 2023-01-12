@@ -16,13 +16,11 @@ class PaymentHandler: NSObject {
     var paymentStatus = PKPaymentAuthorizationStatus.failure
     var completionHandler: PaymentCompletionHandler?
     
-    //payment network
     static let supportedNetwork: [PKPaymentNetwork] = [
         .visa,
         .masterCard
     ]
     
-    //Delivery setting
     func shippingMethodCalculator() -> [PKShippingMethod] {
         let today = Date()
         let calender = Calendar.current
@@ -43,7 +41,6 @@ class PaymentHandler: NSObject {
         return []
     }
     
-    //create apple pay requset
     func startPayment(products: [ProductModel], total: Int, completion: @escaping PaymentCompletionHandler){
         completionHandler = completion
         
@@ -81,7 +78,6 @@ class PaymentHandler: NSObject {
 }
     
 extension PaymentHandler: PKPaymentAuthorizationControllerDelegate{
-    //handler pay statues is success or not
     func paymentAuthorizationController(_ controller: PKPaymentAuthorizationController, didAuthorizePayment payment: PKPayment, handler completion: @escaping (PKPaymentAuthorizationResult) -> Void) {
         let errors = [Error]()
         let status = PKPaymentAuthorizationStatus.success

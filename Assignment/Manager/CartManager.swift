@@ -14,21 +14,19 @@ class CartManager: ObservableObject {
     let paymentHandler = PaymentHandler()
     @Published private(set) var paymentSuccess = false
     
-    //add to cart
     func addToChart(product: ProductModel) {
         products.append(product)
         total += product.price
     }
     
-    //remove on cart
     func rmFromCart(product: ProductModel) {
         if let removeProduct = products.firstIndex(where: {$0.id == product.id}){
             products.remove(at: removeProduct)
         }
+        //products = products.filter { $0.id != product.id }
         total -= product.price
     }
     
-    //check payment is success
     func pay(){
         paymentHandler.startPayment(products: products, total: total){ success in
             self.paymentSuccess = success

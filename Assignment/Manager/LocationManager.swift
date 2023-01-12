@@ -26,7 +26,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
 
    
-    //load GPS location
+    
     var statusString: String {
         guard let status = locationStatus else {
             return "unknown"

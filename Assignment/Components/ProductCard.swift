@@ -54,6 +54,7 @@ struct ProductCard: View {
                     Image(systemName: product.isFav ? "star.fill" : "star")
                         .padding(10)
                         .foregroundColor(product.isFav ? .yellow : .white)
+//                        .foregroundColor(.white)
                         .background(.black)
                         .cornerRadius(50)
                         .padding()

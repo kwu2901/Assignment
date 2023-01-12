@@ -24,9 +24,9 @@ class ProductManager: ObservableObject {
         if let removeProduct = products.firstIndex(where: {$0.id == product.id}){
             products.remove(at: removeProduct)
         }
+        //products = products.filter { $0.id != product.id
     }
     
-    //using to init product list
     func loadMyImagesJSONFile() {
         do {
             let data = try FileManager().readDocument()
@@ -43,7 +43,6 @@ class ProductManager: ObservableObject {
         }
     }
     
-    //update product fav function
     func updateProduct(_ product: ProductModel) {
         if let index = products.firstIndex(where: {$0.id == product.id}) {
             products[index].isFav.toggle()

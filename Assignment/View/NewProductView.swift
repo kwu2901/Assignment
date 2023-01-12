@@ -173,7 +173,6 @@ struct NewProductView: View {
     }
 }
 
-//check int of price
 extension String{
     var isInt: Bool {
         return Int(self) != nil
@@ -188,7 +187,6 @@ struct NewProductView_Previews: PreviewProvider {
     }
 }
 
-//reset view value
 extension NewProductView{
     private func reset(){
         name = ""
@@ -197,7 +195,6 @@ extension NewProductView{
     }
 }
 
-//call product manager to save new obj
 extension NewProductView{
     func saveNewProduct() -> ProductModel{
         let newProduct = ProductModel(name: name, dir: dir, price: Int(price)!, isFav: false)

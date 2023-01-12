@@ -18,7 +18,6 @@ extension FileManager {
         fileExists(atPath: Self.docDirURL.appendingPathComponent(docName).path)
     }
     
-    //saving JSON file of local
     func saveDocument(contents: String) throws {
         let url = Self.docDirURL.appendingPathComponent(fileName)
         do {
@@ -28,7 +27,6 @@ extension FileManager {
         }
     }
     
-    //laod JSON file of local
     func readDocument() throws -> Data {
         let url = Self.docDirURL.appendingPathComponent(fileName)
         do {
@@ -38,7 +36,6 @@ extension FileManager {
         }
     }
     
-    //saving image by product model uuid
     func saveImage(_ id: String, image: UIImage) throws {
         if let data = image.jpegData(compressionQuality: 0.6) {
             let imageURL = FileManager.docDirURL.appendingPathComponent("\(id).jpg")
@@ -52,7 +49,6 @@ extension FileManager {
         }
     }
     
-    //load image by product model uuid
     func readImage(with id: UUID) throws -> UIImage {
         let imageURL = FileManager.docDirURL.appendingPathComponent("\(id).jpg")
         do {

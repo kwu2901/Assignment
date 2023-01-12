@@ -4,16 +4,6 @@ Mobile App Development
 Student no.:
 227105563
 
-Apps Type : Shopping App
-
-	View:
-		Shop View
-			Cart View
-				Delivery View
-		Add Producrt View
-		Favorites View
-		Setting View
-
 Sensors:
 
 	Camera:
