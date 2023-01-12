@@ -16,10 +16,12 @@ class NetworkHandler {
         "authorization" : "token 74bc5c8a-e465-49e3-8d77-9a3a5cc2287a"
     ]
     
+    //check network is connected
     func checkInt() -> Bool {
         return NetworkReachabilityManager()?.isReachable ?? false
     }
     
+    //get server json data
     func GetRequest() {
         var url = URLRequest(url: URL(string: serverURL)!)
         url.httpMethod = HTTPMethod.get.rawValue
@@ -32,17 +34,13 @@ class NetworkHandler {
             case .success (let value):
                 let productList = JSON(value)
                 print("\(productList)")
-//                var products: [ProductModel] = []
-//                for productJSON in productList {
-//                    let product = ProductModel(id: )
-//                    products.append(product)
-//                }
             case .failure(let error):
                 print(error)
             }
         }
     }
     
+    //post server data
     func doRequest(product: [ProductModel], method: HTTPMethod){
         let params = convertToJson(products: product)
         
@@ -57,10 +55,11 @@ class NetworkHandler {
         }
     }
     
+    //setting request
     func setRequest(product: String) -> URLRequest{
         let url = URL(string: serverURL)!
         var request = URLRequest(url: url)
-//        let json = convertToJson(product: product)
+        
         request.httpMethod = HTTPMethod.post.rawValue
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         print(product)
@@ -68,6 +67,7 @@ class NetworkHandler {
         return request
     }
     
+    //convert productModel to Json
     func convertToJson(products: [ProductModel]) -> [String: Any] {
         var result = [String: Any]()
         for product in products{
