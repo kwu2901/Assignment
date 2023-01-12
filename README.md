@@ -8,7 +8,7 @@ Apps Type : Shopping App
 
 	View:
 		Shop View
-		  Cart View
+		    Cart View
 			Delivery View
 		Add Producrt View
 		Favorites View
